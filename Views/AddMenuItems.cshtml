@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Project.Models.ItemMaster>
+@{
+    ViewBag.Title = "AddMenuItems";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>AddMenuItems</h2>
+
+
+<select name="Id" id="Id" >
+   <option value="">select</option>
+    @foreach(var res in Model.ToList())
+    {
+        <option value="@res.Id">@res.Name</option>
+    }
+</select>

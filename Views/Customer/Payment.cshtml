@@ -1,0 +1,220 @@
+﻿@model Project.Models.OrderMaster
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Payment method</h1>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="container">
+
+        <div class="row">
+            @using (Html.BeginForm("Payment", "Customer", FormMethod.Post, new { id = "Payment" }))
+            {
+             @Html.HiddenFor(m => m.OrderId, new { id = "OrderID" })
+                <div class="col-md-9 clearfix" id="checkout">
+
+                    <div class="box">
+                 
+                            <ul class="nav nav-pills nav-justified">
+                                <li>
+                                    <a href="#"><i class="fa fa-shopping-cart"></i><br>Place Order</a>
+                                </li>
+                                <li class="active">
+                                    <a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
+                                </li>
+                                <li class="disabled">
+                                    <a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                                </li>
+                            </ul>
+
+                            <div class="content">
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <div class="box payment-method">
+
+                                            <h4>Payment gateway</h4>
+
+                                            <p>VISA and Mastercard only.</p>
+
+                                            <div class="box-footer text-center">
+                                                @Html.RadioButton("Method", "online", new { id = "online" })
+                                                @Html.Label("online", "Online Payment")
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="box payment-method">
+
+                                            <h4>Cash on delivery</h4>
+
+                                            <p>You pay when you get it.</p>
+
+                                            <div class="box-footer text-center">
+                                                @Html.RadioButton("Method", "cash", new { id = "cash" })
+                                                @Html.Label("cash", "Cash On delivery")
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+
+                            </div>
+                            <!-- /.content -->
+                       
+                            <div class="box-footer">
+
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-template-main">
+                                        Continue to Order review<i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+              
+                    </div>
+                    <!-- /.box -->
+
+            </div>
+               </div>
+            <!-- /.col-md-9 -->
+   }
+        <div class="col-md-3">
+           
+            <div class="box" id="order-summary">
+                <div class="box-header">
+                    <h3>Online Payment</h3>
+                </div>
+                <div class="container">
+                    <form method="post" id="onlinePayment" hidden="hidden">
+                        <div class="container">
+                           
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        @Html.Label("Card NO:")
+                                        @Html.TextBox("Card", "", new { id = "Card", @class = "form-control",placeholder ="xxxx xxxx xxxx xxxx" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Exp Date:")
+                                        @Html.TextBox("EDate", "", new { id = "EDate", @class = "form-control",placeholder ="xx/xx" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("CVC NO")
+                                        @Html.TextBox("CVV", "", new { id = "CVV", @class = "form-control" , placeholder ="xxx"})
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Generate OTP")
+                                      
+                                        <button type="button" class="btn btn-template-main">
+                                            <i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">Generate OTP</span>
+                                            @{
+
+                                                var random = new Random();
+                                                var otp = Convert.ToString(random.Next(10000, 90000));
+                                                var email = Model.CustomerMaster.EmailID;
+                                                int ck = Project.common.Mail.SendMail("OTP", "Use This OTP:\n" + otp, email);
+                                            }
+                                        </button>
+                                    </div>
+                                    <div>
+                                        @Html.TextBox("otp1", "", new { id = "otp1", @class = "form-control", placeholder = "Enter OTP" })
+                                        @{
+                                            
+                                        }
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-danger">submit</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+     
+                
+            </div>
+
+        </div>
+        <!-- /.col-md-3 -->
+
+    </div>
+        <!-- /.row -->
+
+    </div>
+  
+</div>
+
+@section Reg
+{
+   
+<script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+<script src="@Url.Content("~/js/jquery.mask.js")"></script>
+<script src="@Url.Content("~/js/jquery.mask.min.js")"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        @* $("#onlinePayment").validate({
+
+                rules: {
+                    Password: {
+                        required: true
+                    },
+
+                    CPassword: {
+                        required: true,
+                        equalTo: Password,
+                    },
+                    otp1: {
+                        required: true,
+
+                    },
+
+                },
+
+                messages: {
+                    otp1: {
+                        required: 'Please Enter  Name',
+
+                    }
+                },
+
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }
+
+            });*@
+
+        $("#cash").on("click", function () {
+
+            $("#onlinePayment").hide();
+        });
+
+        $("#online").on("click", function () {
+
+            $("#onlinePayment").show();
+        });
+
+
+        $("#Card").mask('1234 4567 7891 1234');
+        $("#EDate").mask('12/14');
+        $("#CVV").mask('123', 'amex');
+    });
+    </script>
+
+
+}

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Project.Models.MenuMaster>
+@{
+    ViewBag.Title = "SampleRequest";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+
+<br />
+
+<section style="background-image:url(@Url.Content("~/img/texture-bw.png")">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Choose Your Sample tiffin</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="color:red; font-size:25px">
+        <div class="col-md-5">
+            @if (TempData["notice"] != null)
+            {
+                <p>@TempData["notice"]</p>
+            }
+        </div>
+    </div>
+</section>
+@foreach (var menu in Model.ToList())
+{
+    if(@menu.Id ==1 || @menu.Id == 2)
+    { 
+    @*<div class="row products">*@
+    <div class="col-md-6 col-sm-6">
+        <div class="product">
+            <div class="text-center">
+                <h3>
+                    @menu.Name
+                </h3>
+            </div>
+            <div class="image">
+
+                <img src=@Url.Content(menu.Image) style="width:250px; height:250px;" alt="" />
+            </div>
+            <div class="text">
+                <h4>
+                    @menu.Description
+                </h4>
+                <p class="price">@menu.Price</p>
+            </div>
+
+
+            <a href="@Url.Action("ViewMenuItems", "Customer", new { id=menu.Id })" class="btn btn-template-main" data-toggle="modal"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">View MenuItem</span></a>
+            <br />
+            <br />
+
+            <button type="button" onclick="@("window.location.href='" + Url.Action("SampleOrder", "Customer", new {id= @menu.Id }) + "'");" id="submit" class="btn btn-danger"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">Request For Sample</span></button>
+
+            <br />
+
+        </div>
+    </div>
+}
+
+}
+
+@section Reg
+{
+    <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+
+    <script type="text/javascript">
+
+
+
+        @*function Sample(id) {
+            $.ajax({
+                datatype: 'json',
+                type: 'post',
+                data: { id: id },
+                url: '@Url.Action("SampleOrder","Customer")',
+                success: function (res) {
+                    if (res.toString() == "success") {
+                        alert('You allowed to Placed the Order'),
+                        window.location.href = '@Url.Action("SampleRequest", "Customer")';
+                    }
+                    else {
+                        alert(res.toString());
+                    }
+                },
+                error: function (res) {
+                    alert('Error');
+                }
+            });
+        }*@
+    </script>
+
+}

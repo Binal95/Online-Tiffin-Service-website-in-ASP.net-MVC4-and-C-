@@ -1,0 +1,96 @@
+﻿
+@model IEnumerable<Project.Models.DailyOrderData_Result>
+@{
+    ViewBag.Title = "ViewDailyOrder";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Your today's order details</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-12" id="customer-orders">
+
+
+    <div class="box">
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th> Customer Name</th>
+                        <th>Order Name</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                        <th>Payment method</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.ToList())
+                    {
+
+                        <tr>
+                            <td>@order.FirstName</td>
+                            <td>@order.Name</td>
+                            <td>@order.Date</td>
+                            <td>@order.GrandTotal</td>
+                            <td>@order.PaymentMode</td>
+                           
+                            <td>
+                                <span class="label label-info">@order.Status</span>
+                            </td>
+                            <th>
+                                <button onclick="Cancel(@order.OrderId)" class="btn btn-template-main btn-sm">Cancel</button>
+                            </th>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Reg
+{
+    <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+
+
+    <script type="text/javascript">
+
+        function Cancel(id) {
+
+            $.ajax({
+                datatype: 'json',
+                type: 'post',
+                data: { oid: id },
+                url: '@Url.Action("CancelOrder","Customer")',
+                success: function (item) {
+                    if (item.toString() == "Cancel") {
+                        alert('Order Cancelled'),
+                        window.location.href = '@Url.Action("ViewDailyOrder","Customer")';
+                    }
+                    else {
+                        alert('You are not able to cancel the order now');
+                    }
+                },
+                error:function(item){
+                    alert('Error');
+                }
+
+            });
+        }
+    </script>
+}

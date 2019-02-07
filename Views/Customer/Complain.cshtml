@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Complain";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Provide Feedback</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-7">
+    @using (Html.BeginForm("Complain", "Customer", FormMethod.Post, new { id = "ComForm" }))
+    {
+
+
+        <div class="form-group">
+            @Html.TextArea("Complain", "", new { id = "Complain", @class = "form-control", placeholder = " Please write your complain here" })
+        </div>
+        <div>
+            @Html.TextBox("Dname", "", new { id = "Dname", @class = "form-control", placeholder = " If you have complain about driver, Please driver name here" })
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="text-center">
+            <button type="submit" id="submit1" class="btn btn-template-main"><i class="fa fa-user-md"></i> Submit </button>
+        </div>
+                <br />
+        <br />
+        <br />
+        <br />
+    }
+</div>
+
+@section reg
+{
+    <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery-ui.min.js")"></script>
+    <link href="@Url.Content("~/css/jquery-ui.css")" rel="stylesheet" />
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#ComForm").validate({
+                rules: {
+                    Complain: {
+                        required: true
+                    },
+                },
+                messages: {
+                    Complain: {
+                        required: 'please enter complain'
+                    },
+               
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }
+            });
+        });
+
+
+
+    </script>
+}
+
+
+
+

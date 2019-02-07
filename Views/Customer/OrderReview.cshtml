@@ -1,0 +1,155 @@
+﻿@model IEnumerable<Project.Models.OrderList_Result>
+@{
+    ViewBag.Title = "OrderReview";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Order review</h1>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-9 clearfix" id="checkout">
+
+                <div class="box">
+      
+                        <ul class="nav nav-pills nav-justified">
+                            <li>
+                                <a href="#"><i class="fa fa-shopping-cart"></i><br>Place Order</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
+                            </li>
+                            <li class="active">
+                                <a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                            </li>
+                        </ul>
+
+                    <div class="content">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">MenuName</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Quantity</th>
+                                        <th>Status</th>
+                                        <th>Unit price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                @foreach (var order in Model.ToList())
+                                {
+                                    <tbody>
+
+
+                                        <tr>
+                                            <td>
+                                                <img src=@Url.Content(order.Image) style="width:50px; height:50px;" />
+                                            </td>
+                                            <td>
+                                                @order.Name
+                                            </td>
+                                            <td>@order.StartDate</td>
+                                            <td>@order.EndDate</td>
+                                            <td>@order.Quantity</td>
+                                            <td>
+                                                <span class="label label-info">@order.Status</span>
+                                            </td>
+                                            <td>@order.Price</td>
+                                            <td>@order.Total</td>
+                                        </tr>
+                                        @{
+                                    var add = order.DeliveryAddr;
+                                    string[] addr = add.Split(',');
+                                    var street = addr[0];
+                                    var area = addr[1];
+                                    var pin = addr[2];
+                                        }
+                                     
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+
+                      @*
+      <div class="row addresses">
+        <div class="col-sm-6">
+            <h3 class="text-uppercase">Invoice address</h3>
+            <p>
+                John Brown
+                <br>13/25 New Avenue
+                <br>New Heaven
+                <br>45Y 73J
+                <br>England
+                <br>Great Britain
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <h3 class="text-uppercase">Shipping address</h3>
+            <p>
+              addr
+            </p>
+        </div>
+    </div>*@
+
+
+                    </div>
+            </div>
+            <!-- /.col-md-9 -->
+                    </div>
+            <div class="col-md-3">
+
+                <div class="box" id="order-summary">
+                    <div class="box-header">
+                        <h3>Order summary</h3>
+                    </div>
+                    <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                @foreach(var order in Model.ToList())
+                                { 
+                                <tr>
+                                    <td>Order subtotal</td>
+                                    <th>@order.Total</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Tax</td>
+                                    <th>@order.Tax</th>
+                                </tr>
+                                <tr class="total">
+                                    <td>Total</td>
+                                    <th>@order.GrandTotal</th>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.col-md-3 -->
+
+      
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+</div>
+</div>

@@ -1,0 +1,185 @@
+﻿@model IEnumerable<Project.Models.MenuMaster>
+@{
+        ViewBag.Title = "ViewMenu";
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+   
+}
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Menu Details</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="background-gray-dark">
+    <center> <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#Menu"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">Add New Menu</span></a></center>   
+</div>
+
+    @foreach (var menu in Model.ToList())
+    {
+
+        @*<div class="row products">*@
+        <div class="col-md-3 col-sm-4">
+            <div class="product">
+                <div class="text-center">
+                    <h3>
+                        @menu.Name
+                    </h3>
+                </div>
+                <div class="image">
+
+                    <img src=@Url.Content(menu.Image) style="width:300px; height:300px;" />
+                </div>
+                <div class="text">
+                    <h4>
+                        @menu.Description
+                    </h4>
+                    <p class="price">@menu.Price</p>
+                </div>
+                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                    <button onclick="@("window.location.href='" + @Url.Action("EditMenu", "Admin", new {id=menu.Id }) + "'");"
+                            class="btn  btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit">
+                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit Menu
+                    </button>
+                </p>
+                <p data-placement="top" data-toggle="tooltip" title="Delete"><button onclick="DeleteMenu(@menu.Id)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete Menu</button></p>
+
+                <p>
+                    <a href="@Url.Action("ViewMenuItems", "Admin", new { id=menu.Id })" class="btn btn-template-main" data-toggle="modal"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">View MenuItem</span></a>
+                </p>
+                <p>
+                    <a href="@Url.Action("AddMenuItems", "Admin", new { id=menu.Id})" class="btn btn-template-main" data-toggle="modal"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">Add New MenuItem</span></a>
+                </p>
+
+
+            </div>
+        </div>
+        @*</div>*@
+
+    }
+
+    <div class="modal fade" id="Menu" tabindex="-1" role="dialog" aria-labelledby="Add New Menu" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <center><h4 class="modal-title" id="Login">Add New Menu</h4></center>
+                </div>
+                <div class="modal-body">
+
+                    @using (Html.BeginForm("AddMenu", "Admin", FormMethod.Post, new { id = "menu", enctype = "multipart/form-data" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("Name", "", new { id = "Name", @class = "getValue form-control", Placeholder = "Enter Menu Name" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBox("Description", "", new { id = "Description", @class = "form-control", Placeholder = "Enter Details of Menu" })
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Upload Image")
+                            <input type="file" name="file"  id="file" placeholder="Upload Image" />
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBox("Price", "", new { id = "Price", @class = "form-control", Placeholder = "Enter Price of menu" })
+                        </div>
+                        <p class="text-center">
+                            <button type="submit" id="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">Add New Menu</span></button>
+                        </p>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+@section reg
+{
+    <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+
+    <script type="text/javascript">
+
+        function DeleteMenu(id)
+        {
+            $.ajax({
+                datatype:'json',
+                type:'post',
+                data:{id: id},
+                url: '@Url.Action("DeleteMenu","Admin")',
+                success: function (menu) {
+                    if(menu.toString() == "Success")
+                    {
+                        alert("Menu deleted successfully")
+                        window.location.href = '@Url.Action("ViewMenu","Admin")';
+                    }
+                    else
+                    {
+                        alert("Error");
+                    }
+                },
+                error: function (item) {
+                    $('#ErrMsg').text(item.toString());
+                }
+          });
+        }
+
+        $(document).ready(function () {
+
+            $("#menu").validate({
+
+                rules: {
+                    Name: {
+                        required: true,
+                        remote: {
+                            url: '@Url.Action("CheckMenuName","Admin")',
+                            data: {
+                                'Name': function () {
+                                    return $(".getValue").val();
+                                }
+                            }
+                        }
+                    },
+                    Description: {
+                        required: true
+                    },
+                    file: {
+                        required: true
+                    },
+                    Price: {
+                        required: true
+                    }
+                },
+
+                messages: {
+                    Name: {
+                        required: 'Please Enter  Name',
+                        remote:'Name alreay exits'
+                    },
+                    Description: {
+                        required: 'Please Enter details'
+                    },
+                    file: {
+                        required: 'Please Enter image'
+                    },
+                    Price: {
+                        required: 'Please Enter price'
+                    }
+                },
+
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }
+
+            });
+        });
+
+
+    </script>
+
+}

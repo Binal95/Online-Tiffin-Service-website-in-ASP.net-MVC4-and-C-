@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Project.Models.RequestMaster>
+@{
+    ViewBag.Title = "ViewSampleRequest";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>List of Sample food request</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-9" id="customer-orders">
+
+
+<div class="box">
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Customer Id</th>
+                    <th>Menu Id</th>
+                    <th>Date</th>
+
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.ToList())
+                {
+
+                    <tr>
+                        @*<th>@order.Name</th> *@
+                        <td>@order.CustId</td>
+                        <td>@order.MenuId</td>
+                        <td>@order.Date</td>
+
+                        <td>
+                            <span class="label label-info">@order.Status</span>
+                        </td>
+                        <td>
+                            <button onclick="Accept(@order.Id)" class="btn btn-template-main btn-sm">Accept</button>
+                        </td>
+                        <td>
+                            <button onclick="Reject(@order.Id)" class="btn btn-template-main btn-sm">Reject</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+    @section Reg
+{
+        <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+        <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+
+
+        <script type="text/javascript">
+
+
+            function Accept(id) {
+            //    var data = { 'id': id, 'Accept': String };
+             //   var str="Accept"
+                $.ajax({
+                    datatype: 'json',
+                    type: 'post',
+                    data: { id:id, st:"Accept" },
+                    url: '@Url.Action("UpdateStatus","Admin")',
+                    success: function (item) {
+                        if (item.toString() == "Accept") {
+                            alert('Order Accepted'),
+                            window.location.href = '@Url.Action("ViewSampleRequest", "Admin")';
+
+                        }
+                        else {
+                            alert('Error else');
+                        }
+                    },
+                    error: function (item) {
+                        alert('Error');
+                    }
+
+
+                });
+            }
+
+            function Reject(id) {
+                $.ajax({
+                    datatype: 'json',
+                    type: 'post',
+                    data: { id: id, "st": "Reject" },
+                    url: '@Url.Action("UpdateStatus","Admin")',
+                    success: function (item) {
+                        if (item.toString() == "Reject") {
+                            alert('Order Rejected'),
+                            window.location.href = '@Url.Action("ViewSampleRequest", "Admin")';
+
+                        }
+                        else {
+                            alert('Error else');
+                        }
+                    },
+                    error: function (item) {
+                        alert('Error');
+                    }
+
+
+                });
+            }
+
+
+        </script>
+    }

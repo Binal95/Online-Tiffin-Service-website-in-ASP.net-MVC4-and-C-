@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Project.Models.GetMenuItems_Result>
+@{
+    ViewBag.Title = "ViewMenuItems";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+    var MenuId = (int)ViewBag.MenuID;
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Items of menu</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" value="@MenuId" id="MenuId" />
+@foreach (var item in Model.ToList())
+{
+    @*<div class="row products">*@
+    <div class="col-md-3 col-sm-4">
+        <div class="product">
+            <div class="text-center">
+                <h3>
+                    @item.Name
+                </h3>
+            </div>
+            <div class="image">
+
+                <img src=@Url.Content(item.Image) style="width:150px; height:150px;" />
+            </div>
+            <div class="text">
+                <h4>
+                    @item.Description
+                </h4>
+                <p class="price">@item.Price</p>
+            </div>
+
+           
+        </div>
+    </div>
+    @*</div>*@
+
+}

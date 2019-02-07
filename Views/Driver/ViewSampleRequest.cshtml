@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Project.Models.RequestMaster>
+@{
+    ViewBag.Title = "ViewSampleRequest";
+    Layout = "~/Views/Shared/_LayoutDriver.cshtml";
+}
+
+<h2>ViewSampleRequest</h2>
+
+<div class="col-md-9" id="customer-orders">
+  <div class="box">
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Customer Id</th>
+                        <th>Menu Id</th>
+                        <th>Date</th>
+
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.ToList())
+                    {
+
+                        <tr>
+                            @*<th>@order.Name</th> *@
+                            <td>@order.CustId</td>
+                            <td>@order.MenuId</td>
+                            <td>@order.Date</td>
+
+                            <td>
+                                <span class="label label-info">@order.Status</span>
+                            </td>
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Project.Models.DailyOrder>
+@{
+    ViewBag.Title = "ViewDailyOrder";
+    Layout = "~/Views/Shared/_LayoutDriver.cshtml";
+    String ordername = "";
+    Int32 price = 0;
+    String pm = "";
+}
+
+@using (var context = new Project.Models.Chatpata_dabbaEntities1())
+{
+
+    foreach (var x in Model.ToList())
+    {
+        var psic = context.OrderMasters.Where(p => p.OrderId == x.OrderId).FirstOrDefault();
+        if (psic != null)
+        {
+            var data = context.MenuMasters.Where(q => q.Id == psic.MenuId).FirstOrDefault();
+            if (data != null)
+            {
+                ordername = data.Name;
+                price = Convert.ToInt32(psic.GrandTotal);
+                pm = psic.PaymentMode;
+            }
+
+        }
+    }
+}
+
+<h2>ViewDailyOrder</h2>
+
+<div class="col-md-9" id="customer-orders">
+    
+    <br /><br /><br />
+    <div class="box">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Cutomer Id</th>
+                        <th>Order</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Address</th>
+                        <th>Price</th>
+                        <th>Payment Method</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.ToList())
+                    {
+
+                        <tr>
+                            @using (Html.BeginForm("CodeRetrival", "Driver", FormMethod.Post, new { id = "vdoform" }))
+                        {
+                            <td>@order.CustomerMaster.FirstName</td>
+                            <td>@order.CustId</td>
+                            <td>@ordername</td>
+                            <td>@order.Date</td>
+                            <td>@order.Status</td>
+                            <td>@order.CustomerMaster.Address1,@order.CustomerMaster.Address2,@order.CustomerMaster.Address3,@order.CustomerMaster.Pincode</td>
+                            <td>@price</td>
+                            <td>@pm</td>
+                            <td>
+                                <button type="submit" id="vdo" class="btn btn-template-main btn-sm">Code</button>
+                            </td>
+                            }
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

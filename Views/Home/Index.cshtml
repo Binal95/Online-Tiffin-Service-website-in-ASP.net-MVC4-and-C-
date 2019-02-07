@@ -1,0 +1,1045 @@
+﻿@{
+    ViewBag.Title = "Index";
+    //  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ChatpataDabba.com</title>
+
+    <meta name="keywords" content="">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <link href="@Url.Content("/css/style.red.css")" rel="stylesheet" id="theme-stylesheet">
+    <link href="@Url.Action("/css/owl.carousel.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/custom.css")" rel="stylesheet"/>
+    <link href="@Url.Content("/css/owl.theme.css")" rel="stylesheet"/>
+
+    <!-- Responsivity for older IE -->
+    <!--[if lt IE 9]> 
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicon and apple touch icons-->
+    @*<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="img/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />*@
+    <!-- owl carousel css -->
+
+</head>
+<body>
+
+    <div id="all">
+
+        <header>
+
+            <div id="top">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-xs-5 contact">
+                            <p class="hidden-sm hidden-xs">Contact us on +91 7359857677 or chatapatadabba@gmail.com</p>
+                            <p class="hidden-md hidden-lg">
+                                <a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                            </p>
+                        </div>
+                        <div class="col-xs-7">
+                            <div class="login">
+                                <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
+                                <a href="@Url.Action("Registration1","Home")"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand home" href="@Url.Action("Index","Home")">
+                                <img src="@Url.Content("/img/Logo.jpg")" alt="Universal logo" class="hidden-xs hidden-sm">
+                            </a>
+
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="navbar-collapse collapse" id="navigation">
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li class="dropdown active">
+                                    <a href="@Url.Action("Index","Home")" class="dropdown-toggle">Home<b class="caret"></b></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="@Url.Action("SampleRequest","Customer")" class="dropdown-toggle">Request Sample tiffin<b class="caret"></b></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="@Url.Action("Order","Customer")" class="dropdown-toggle">Order Now<b class="caret"></b></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="@Url.Action("AboutUs","Home")" class="dropdown-toggle">About Us <b class="caret"></b></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="@Url.Action("ContactUs","Home")" class="dropdown-toggle">Contact Us <b class="caret"></b></a>                      
+                                </li>
+
+                          
+                            </ul>
+
+                        </div>
+
+                        <div class="collapse clearfix" id="search">
+
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+
+                                        <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                                    </span>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <center><h4 class="modal-title" id="Login"> Login</h4></center>
+                    </div>
+                    <div class="modal-body">
+
+                        @using (Html.BeginForm("CheckLogin", "Home", FormMethod.Post, new { id = "Login" }))
+                        {
+                       
+                            <div class="form-group">
+                                @Html.TextBox("EmailID", "", new { id = "EmailID", @class = "form-control", Placeholder = "Enter Email Id" })
+                            </div>
+                            <div class="form-group">
+                                @Html.Password("Password", "", new { id = "Password", @class = "form-control", Placeholder = "Enter Password" })
+                            </div>
+
+                            <p class="text-center">
+                                <button type="submit" id="submit" class="btn btn-template-main"><i class="fa fa-sign-in"></i>Log in</button>
+                            </p>
+
+                        }
+                        <p class="text-center text-muted">Not registered yet?</p>
+
+                        <p class="text-center text-muted">
+                            <a href="@Url.Action("Registration1", "Home")"><strong>Register Now</strong></a>
+                        </p>
+
+                        <p class="text-center text-muted">
+                            <a href="@Url.Action("Forgotpass", "Home")"><strong>Forgot Password</strong></a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="min-height: 200px;">
+            <!-- Jssor Slider Begin -->
+            <!-- To move inline styles to css file/block, please specify a class name for each element. -->
+            <!-- ================================================== -->
+            <div id="slider1_container" style="visibility: hidden; position: relative; margin: 0 auto;
+        top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">
+                <!-- Loading Screen -->
+                <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+                    <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;
+                top: 0px; left: 0px; width: 100%; height: 100%;">
+                    </div>
+                    <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
+                top: 0px; left: 0px; width: 100%; height: 100%;">
+                    </div>
+                </div>
+                <!-- Slides Container -->
+                <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px; height: 500px; overflow: hidden;">
+                    <div>
+                    <img u="image" src="@Url.Content("~/img/s1.jpeg")" />
+                    </div>
+                    @*<div>
+        <img src="~/img/s1.jpeg" />
+        <img u="image" src="@Url.Content("~/img/pizza.jpg")" />
+    </div>*@
+                    <div>
+                        @*<img src="~/img/s4.jpg" />*@
+                        <img u="image" src="@Url.Content("~/img/dish1.jpg")" />
+                        <div class="carousel-caption">
+                            <h5>nice food</h5>
+                        </div>
+                    </div>
+                    <div>
+                        <img u="image" src="@Url.Content("~/img/dish5.jpg")" />
+                    </div>
+                    <div>
+                        <img u="image" src="@Url.Content("~/img/dish4.jpg")" />
+                    </div>
+                          </div>
+
+                <!--#region Bullet Navigator Skin Begin -->
+                <!-- Help: http://www.jssor.com/development/slider-with-bullet-navigator-jquery.html -->
+                <style>
+                        /* jssor slider bullet navigator skin 21 css */
+                        /*
+                    .jssorb21 div           (normal)
+                    .jssorb21 div:hover     (normal mouseover)
+                    .jssorb21 .av           (active)
+                    .jssorb21 .av:hover     (active mouseover)
+                    .jssorb21 .dn           (mousedown)
+                    */
+                        .jssorb21 {
+                            position: absolute;
+                        }
+
+                            .jssorb21 div, .jssorb21 div:hover, .jssorb21 .av {
+                                position: absolute;
+                                /* size of bullet elment */
+                                width: 19px;
+                                height: 19px;
+                                text-align: center;
+                                line-height: 19px;
+                                color: white;
+                                font-size: 12px;
+                                background: url(../img/b21.png) no-repeat;
+                                overflow: hidden;
+                                cursor: pointer;
+                            }
+
+                            .jssorb21 div {
+                                background-position: -5px -5px;
+                            }
+
+                                .jssorb21 div:hover, .jssorb21 .av:hover {
+                                    background-position: -35px -5px;
+                                }
+
+                            .jssorb21 .av {
+                                background-position: -65px -5px;
+                            }
+
+                            .jssorb21 .dn, .jssorb21 .dn:hover {
+                                background-position: -95px -5px;
+                            }
+                </style>
+                <!-- bullet navigator container -->
+                <div u="navigator" class="jssorb21" style="bottom: 16px; right: 6px;">
+                    <!-- bullet navigator item prototype -->
+                    <div u="prototype"></div>
+                </div>
+                <!--#endregion Bullet Navigator Skin End -->
+                <!--#region Arrow Navigator Skin Begin -->
+                <!-- Help: http://www.jssor.com/development/slider-with-arrow-navigator-jquery.html -->
+                <style>
+                        /* jssor slider arrow navigator skin 21 css */
+                        /*
+                    .jssora21l                  (normal)
+                    .jssora21r                  (normal)
+                    .jssora21l:hover            (normal mouseover)
+                    .jssora21r:hover            (normal mouseover)
+                    .jssora21l.jssora21ldn      (mousedown)
+                    .jssora21r.jssora21rdn      (mousedown)
+                    */
+                        .jssora21l, .jssora21r {
+                            display: block;
+                            position: absolute;
+                            /* size of arrow element */
+                            width: 55px;
+                            height: 55px;
+                            cursor: pointer;
+                            background: url(../img/a21.png) center center no-repeat;
+                            overflow: hidden;
+                        }
+
+                        .jssora21l {
+                            background-position: -3px -33px;
+                        }
+
+                        .jssora21r {
+                            background-position: -63px -33px;
+                        }
+
+                        .jssora21l:hover {
+                            background-position: -123px -33px;
+                        }
+
+                        .jssora21r:hover {
+                            background-position: -183px -33px;
+                        }
+
+                        .jssora21l.jssora21ldn {
+                            background-position: -243px -33px;
+                        }
+
+                        .jssora21r.jssora21rdn {
+                            background-position: -303px -33px;
+                        }
+                </style>
+                <!-- Arrow Left -->
+                
+                <span u="arrowleft" class="arrowleft jssora21l" style="top: 123px; left: 8px;">
+                </span>
+                <!-- Arrow Right -->
+                <span u="arrowright" class="jssora21r" style="top: 123px; right: 8px;">
+                </span>
+                <!--#endregion Arrow Navigator Skin End -->
+                @*<a style="display: none" href="http://www.jssor.com">Bootstrap Slider</a>*@
+            </div>
+            <!-- Jssor Slider End -->
+        </div>
+
+        @*<section>
+
+              <div id="mycarousel" class="carousel slide" style="width:auto">*@
+
+
+
+                    @*<div class="container" style="width:inherit">
+                        <div class="homepage owl-carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#mycarousel" data-slide-to="0" class="active">  </li>
+                                <li data-target="#mycarousel" data-slide-to="1"></li>
+                                <li data-target="#mycarousel" data-slide-to="2"></li>
+                                <li data-target="#mycarousel" data-slide-to="3"></li>
+                                <li data-target="#mycarousel" data-slide-to="4"></li>
+                            </ol>
+
+                            <div class="carousel-inner" style="width:inherit">
+
+                                <div class="item active">
+                                    <img src="@Url.Content("/img/s1.jpeg")" alt="i1" class="img-responsive"  style="width:100%"/>
+                                    <div class="carousel-caption">
+                                        <hgroup>
+                                            <h1>Yummy Food</h1>
+                                            <h3>Hygienic and Delicios food</h3>
+                                   
+                                        </hgroup>
+                                    </div>
+                                </div>
+
+
+                                <div class="item">
+                                    <img src="@Url.Content("/img/s2.jpg")" alt="i2" class="img-responsive" style="width:auto" />
+                                    <div class="carousel-caption" style="color:red">
+                                        <div class="content">
+                                            <hgroup>
+                                                <h1>Yummy Food</h1>
+                                                <h3>Hygienic and Delicios food</h3>
+                                            </hgroup>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <img src="@Url.Content("/img/s3.jpg")" alt="i3" class="img-responsive" style="width:inherit" />
+                                    <div class="carousel-caption">
+                                        <hgroup>
+                                            <h1>Yummy Food</h1>
+                                            <h3>Hygienic and Delicios food</h3>
+                                           
+                                        </hgroup>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="@Url.Content("/img/s4.jpg")" alt="i3" class="img-responsive" style="width:auto" />
+                                    <div class="carousel-caption">
+                                        <hgroup>
+                                            <h1>Yummy Food</h1>
+                                            <h3>Hygienic and Delicios food</h3>
+                                           
+                                        </hgroup>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="@Url.Content("/img/s5.jpg")" alt="i3" class="img-responsive" style="width:auto" />
+                                    <div class="carousel-caption" style="color:red">
+                                        <hgroup>
+                                            <h1>Yummy Food</h1>
+                                            <h3>Hygienic and Delicios food</h3>
+                                         
+                                        </hgroup>
+                                    </div>
+                                </div>
+
+
+                                <a class="left carousel-control" href="#mycarousel" data-slide="prev">
+                                    <span class="icon-prev"></span>
+
+                                </a>
+                                <a class="right carousel-control" href="#mycarousel" data-slide="next">
+
+                                    <span class="icon-next"></span>
+
+                                </a>
+                            </div>
+                        </div>
+                </div>*@
+@*</div>*@
+
+                <!-- *** HOMEPAGE CAROUSEL END *** -->
+@*</section>*@
+
+        <section>
+            @*<section class="bar background-white">*@
+            <div class="container">
+                <div class="heading text-center">
+                    <h2>Tiffin we serve</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box-image-text">
+                            <div class="top">
+                                <div class="image">
+                                    <img src="@Url.Content("/img/sample.jpg")" alt="" class="img-responsive">
+                                </div>
+                                <div class="bg"></div>
+                                <div class="text">
+                                    <p class="buttons">
+                                        <a href="@Url.Action("Login","Home")" class="btn btn-template-transparent-primary"><i class="fa fa-link"></i> Order Now</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h4><a href="blog-post.html">Sample Dish</a></h4>
+                                @*<p>Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is justice. Six draw you him full not mean evil. Prepare garrets it expense windows shewing do an.</p>*@
+                            </div>
+                        </div>
+                        <!-- /.box-image -->
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="box-image-text">
+                            <div class="top">
+                                <div class="image">
+                                    <img src="@Url.Content("/img/regular.jpg")" alt="" class="img-responsive">
+                                </div>
+                                <div class="bg"></div>
+                                <div class="text">
+                                    <p class="buttons">
+                                        <a href="@Url.Action("Login","Home")" class="btn btn-template-transparent-primary"><i class="fa fa-link"></i> Order Now</a>
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h4><a href="blog-post.html">Regular Dish </a></h4>
+                                @*<p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p>*@
+                            </div>
+                        </div>
+                        <!-- /.box-image -->
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="box-image-text">
+                            <div class="top">
+                                <div class="image">
+                                    <img src="@Url.Content("/img/large.jpg")" alt="" class="img-responsive">
+                                </div>
+                                <div class="bg"></div>
+                                <div class="text">
+                                    <p class="buttons">
+                                        <a href="@Url.Action("Login","Home")" class="btn btn-template-transparent-primary"><i class="fa fa-link"></i> Order Now</a>
+                                       
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h4><a href="blog-post.html">Large Dish</a></h4>
+                                @*<p>Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.</p>*@
+                            </div>
+                        </div>
+                        <!-- /.box-image -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        @*<section>
+            <div id="content">
+                <div class="container">
+                    <div class="row">
+                        <!-- *** LEFT COLUMN ***
+                    _________________________________________________________ -->
+
+                            <section>
+                                <div class="heading text-center">
+                                    <h2>FAQ</h2>
+                                </div>
+
+                                <p class="lead">
+                                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+                                    ultricies mi vitae est. Mauris placerat eleifend leo.
+                                </p>
+
+                                <div class="panel-group" id="accordion">
+
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#faq1">
+
+                                                    1. What to do if I have still not received the order?
+
+                                                </a>
+
+                                            </h4>
+                                        </div>
+                                        <div id="faq1" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <p>
+                                                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
+                                                    semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+                                                </p>
+                                                <ul>
+                                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                                                    <li>Aliquam tincidunt mauris eu risus.</li>
+                                                    <li>Vestibulum auctor dapibus neque.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.panel -->
+
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+
+                                                    2. What are the postal rates?
+
+                                                </a>
+
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.panel -->
+
+
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+
+                                                    3. Do you send overseas?
+
+                                                </a>
+
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.panel -->
+
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#faq4">
+
+                                                    4. Why are you more expensive than others?
+
+                                                </a>
+
+                                            </h4>
+                                        </div>
+                                        <div id="faq4" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <p>
+                                                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
+                                                    semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+                                                </p>
+                                                <ul>
+                                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                                                    <li>Aliquam tincidunt mauris eu risus.</li>
+                                                    <li>Vestibulum auctor dapibus neque.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.panel -->
+
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#faq5">
+
+                                                    5. Another important question
+
+                                                </a>
+
+                                            </h4>
+                                        </div>
+                                        <div id="faq5" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <p>
+                                                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
+                                                    semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+                                                </p>
+                                                <ul>
+                                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                                                    <li>Aliquam tincidunt mauris eu risus.</li>
+                                                    <li>Vestibulum auctor dapibus neque.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.panel -->
+
+                                </div>
+                                <!-- /.panel-group -->
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+        
+        </section>*@
+
+        <section>
+            <div id="content">
+                <div class="container">
+                    <div class="row">
+                        <!-- *** LEFT COLUMN ***
+                    _________________________________________________________ -->
+
+                        <section>
+                            <div class="heading text-center">
+                                <h2>FAQ</h2>
+                            </div>
+                            <p class="lead">
+                                "Chatpata Dabba.com"  is an integrated approach to identifying, acquiring, and retaining customers. 
+                                If you have any question please refer our FAQ section as well as you  call to customer care for further inquiry.
+                            </p>
+
+
+                            <div class="panel-group" id="accordion">
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#faq1">
+
+                                                1. What type of dishes are serve by ChatpataDabba?
+
+                                            </a>
+
+                                        </h4>
+                                    </div>
+                                    <div id="faq1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+
+
+                                            ChatpataDabba serve two major type of dishes which includes Gujarati and Punjabi.
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.panel -->
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+
+                                                2.What are the ways customer can place Order?
+
+                                            </a>
+
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            Customer can place order through ChatpataDabba's online place order or through phone calls.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.panel -->
+
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+
+                                                3. Timing regarding delivery of lunch and dinner tiffin?
+
+                                            </a>
+
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>Luch time : 12:00 PM to 2:00 PM</li>
+                                                <li>Dinner time: 8:00 PM to 9:00 PM</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.panel -->
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#faq4">
+
+                                                4. Do customer is able to cancel the order?
+
+                                            </a>
+
+                                        </h4>
+                                    </div>
+                                    <div id="faq4" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            Yes,definitely customer can cancel his/her order but cancel the prticular order before 6 hours of delivery time.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.panel -->
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#faq5">
+
+                                                5. What are the Payment Methods?
+
+                                            </a>
+
+                                        </h4>
+                                    </div>
+                                    <div id="faq5" class="panel-collapse collapse">
+                                        <div class="panel-body">
+
+                                            <ul>
+                                                <li>Payment by cash on delivery.</li>
+                                                <li>Payment by Online Gateway</li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.panel -->
+
+
+
+
+                            </div>
+                            <!-- /.panel-group -->
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section>
+            <div class="heading text-center">
+                <h2>Area we serve</h2>
+            </div>
+            <div id="mapcanvas" style="width:auto; height: 480px;">
+            </div>
+        </section>
+        <footer id="footer">
+                    <div class="container">
+                        <div class="col-md-3 col-sm-6">
+                            <h4>About us</h4>
+
+                            <p>
+                                ChatpataDabba, has created an ecosystem of online meal service for all who stay away from home but wanted to ghar jaisa khana
+                                ChatpataDabba! It allows you to order delicious home-style food in convenient packaging- ALL ONLINE.
+                            </p>
+
+                            <hr>
+
+                            <hr class="hidden-md hidden-lg hidden-sm">
+
+                        </div>
+
+                        <!-- /.col-md-3 -->
+
+                        <div class="col-md-3 col-sm-6">
+
+                            <h4>Contact</h4>
+
+                            <p>
+                                <strong>ChatpataDabba.com</strong>
+                                <br />
+
+                                <strong>Baroda</strong>
+                            </p>
+
+                            <a href="@Url.Action("ContactUs","Home")" class="btn btn-small btn-template-main">Go to contact page</a>
+
+                            <hr class="hidden-md hidden-lg hidden-sm">
+
+                        </div>
+                    </div>
+
+                </footer>
+
+                <div id="copyright">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <p class="pull-left">&copy;chatpataDabba.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+</body>
+</html>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+</script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+<script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/js/bootstrap.min.js")"></script>
+<script src="@Url.Content("~/js/docs.min.js")"></script>
+<script src="@Url.Content("~/js/jssor.slider.mini.js")"></script>
+<script src="@Url.Content("~/js/jquery.counterup.min.js")"></script>
+<script src="@Url.Content("~/js/jquery.parallax-1.1.3.js")"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFn14JGWECKPH7HtFno2mvkVDJjbIUbq4"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        initMap();
+
+
+        function initMap() {
+            var map;
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                mapTypeId: 'roadmap'
+            };
+
+            // Display a map on the web page
+            map = new google.maps.Map(document.getElementById("mapcanvas"), mapOptions);
+            map.setTilt(50);
+
+            // Multiple markers location, latitude, and longitude
+            var markers = [
+                //['Brooklyn Museum, NY', 40.671531, -73.963588],
+                //['Brooklyn Public Library, NY', 40.672587, -73.968146],
+                //['Prospect Park Zoo, NY', 40.665588, -73.965336]
+                ['karelibagh,Vadodara,Gujarat', 22.322624, 73.209391],
+                ['Harni,Vadodara,Gujarat,390022', 22.324817, 73.220034],
+                ['Manjalpur,Vadodara,Gujarat', 22.278627, 73.189372],
+                ['Wagodia,Vadodara,Gujarat', 22.288392, 73.228795],
+                 ['Mandvi,Vadodara,Gujarat', 22.302164, 73.203019],
+                  ['Alkapuri,Vadodara,Gujarat', 22.318028, 73.169845],
+                   ['Akota,Vadodara,Gujarat', 22.293822, 73.169105],
+                    ['Shivvatika,Vadodara,Gujarat', 22.296945, 73.158075]
+            ];
+
+
+            // Add multiple markers to map
+            var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+            // Place each marker on the map
+            for (i = 0; i < markers.length; i++) {
+                var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: markers[i][0]
+                });
+
+
+                map.fitBounds(bounds);
+            }
+            // Set zoom level
+            var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function (event) {
+                this.setZoom(14);
+                google.maps.event.removeListener(boundsListener);
+            });
+
+        }
+        // Load initialize function
+        google.maps.event.addDomListener(window, 'load', initMap);
+
+
+            jQuery(document).ready(function ($) {
+
+                var options = {
+                    $FillMode: 2,                                       //[Optional] The way to fill image in slide, 0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actual size, 5 contain for large image, actual size for small image, default value is 0
+                    $AutoPlay: 1,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                    $Idle: 4000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+                    $PauseOnHover: 1,                                   //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+                    $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                    $SlideEasing: $Jease$.$OutQuint,          //[Optional] Specifies easing for right to left animation, default value is $Jease$.$OutQuad
+                    $SlideDuration: 800,                               //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+                    $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+                    //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+                    //$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+                    $SlideSpacing: 0, 					                //[Optional] Space between each slide in pixels, default value is 0
+                    $Cols: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+                    $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+                    $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+                    $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+                    $DragOrientation: 1,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $Cols is greater than 1, or parking position is not 0)
+
+                    $BulletNavigatorOptions: {                          //[Optional] Options to specify and enable navigator or not
+                        $Class: $JssorBulletNavigator$,                 //[Required] Class to create navigator instance
+                        $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                        $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                        $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+                        $Rows: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+                        $SpacingX: 8,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+                        $SpacingY: 8,                                   //[Optional] Vertical space between each item in pixel, default value is 0
+                        $Orientation: 1,                                //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
+                        $Scale: false                                   //Scales bullets navigator or not while slider scale
+                    },
+
+                    $ArrowNavigatorOptions: {                           //[Optional] Options to specify and enable arrow navigator or not
+                        $Class: $JssorArrowNavigator$,                  //[Requried] Class to create arrow navigator instance
+                        $ChanceToShow: 1,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                        $AutoCenter: 2,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                        $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
+                    }
+                };
+
+                var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+
+                //responsive code begin
+                //remove responsive code if you don't want the slider scales while window resizing
+                function ScaleSlider() {
+                    var bodyWidth = document.body.clientWidth;
+                    if (bodyWidth)
+                        jssor_slider1.$ScaleWidth(Math.min(bodyWidth, 1920));
+                    else
+                        window.setTimeout(ScaleSlider, 30);
+                }
+                ScaleSlider();
+
+                $(window).bind("load", ScaleSlider);
+                $(window).bind("resize", ScaleSlider);
+                $(window).bind("orientationchange", ScaleSlider);
+                //responsive code end
+            });
+            $("#submit").click(function () {
+                //alert(1);
+                if ($("#Login").valid()) {
+                    $('#ErrMsg').text('');
+                    $.ajax({
+                        datatype: 'json',
+                        type: 'post',
+                        data: { EmailId: $("#EmailID").val(), Password: $("#Password").val() },
+                        url: '@Url.Action("CheckLogin","Home")',
+                        success: function (res) {
+                            if (res.toString() == "Success") {
+                                window.location.href = '@Url.Action("Customer", "Home")';
+                            }
+                            else {
+                                $('#ErrMsg').text(res.toString());
+                            }
+                        },
+                        error: function (res) {
+                            $('#ErrMsg').text(res.toString());
+                        }
+                    });
+                }
+            });
+
+            $("#Login").validate({
+
+                rules: {
+                    EmailID: {
+                        required: true,
+                        email: true
+                    },
+                    Password: {
+                        required: true
+                    }
+                },
+                messages: {
+                    EmailID: {
+                        required: 'Please Enter EmailID',
+                        email: 'please entern valid email address'
+                    },
+                    Password: {
+                        required: 'Please Enter Password',
+                    },
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }
+            })
+
+        });
+</script>
+
+@*<script src="@Url.Content("/js/owl.carousel.min.js")"></script>
+    <script src="@Url.Content("/js/bootstrap.min.js")"></script>*@

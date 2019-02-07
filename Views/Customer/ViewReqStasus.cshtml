@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Project.Models.ViewSampleRequest_Result>
+@{
+    ViewBag.Title = "ViewReqStasus";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Status of your sample food</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-9" id="customer-reqs">
+
+    <p class="text-muted lead">If you have any questions, please feel free to <a href="@Url.Action("ConatctUs","Home")">contact us</a>, our customer service center is working for you 24/7.</p>
+
+    <div class="box">
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Menu Name</th>
+                        <th>Date</th>
+
+                        <th>Status</th>
+                        <th>Price</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var req in Model.ToList())
+                    {
+                        <tr>
+                            <th>@req.Name</th>
+                            <td>@req.Date</td>
+                            @*<td>@req.Status</td>*@
+
+                            <td>
+                                <span class="label label-info">@req.Status</span>
+                            </td>
+                            <td>140</td>
+                            <td>
+                                <a href="customer-req.html" class="btn btn-template-main btn-sm">View</a>
+                            </td>
+
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,216 @@
+﻿@model Project.Models.OrderMaster
+@{
+    ViewBag.Title = "PlaceOrder";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>PlaceOrder</h1>
+            </div>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("PlaceOrder", "Customer", FormMethod.Post, new { id = "placeorder" }))
+{
+    
+    //var id = Model.OrderId;
+<div id="content">
+    <div class="container">
+
+        <div class="row">   
+
+            <div class="col-md-12 clearfix" id="checkout">
+
+                <div class="box">
+
+                    <ul class="nav nav-pills nav-justified">
+                        <li class="active">
+                            <a href="#"><i class="fa fa-shopping-cart"></i><br>Place Order</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                        </li>
+                    </ul>
+
+    <div class="content">
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("StartDate")
+                        @*@Html.TextBox("StartDate", "", new { id = "StartDate", @class = "form-control", placeholder = "Enter Start Date" })*@
+                        @Html.TextBox("StartDate", String.Empty, "", new { @class = "form-control datefield", @type = "date", id = "StartDate", placeholder = "Enter Start Date" })
+                    </div>
+                </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.Label("EndDate")
+                            @Html.TextBox("EndDate", String.Empty, "", new { @class = "form-control datefield", @type = "date", id = "EndDate", placeholder = "Enter End Date" })
+                        </div>
+                    </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("Quantity Of Tiffin")
+                        @Html.TextBox("Quantity", "", new { id = "Quantity", @class = "form-control", maxlength = "3" })
+                    </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.Label("Street")
+                            @Html.TextBox("Street", "", new { id = "Street", @class = "form-control", maxlength = "50" })
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("Area")
+                        @Html.TextBox("Area", "", new { id = "Area", @class = "form-control", maxlength = "50" })
+                    </div>
+                </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.Label("PinCode")
+                            @Html.TextBox("Pincode", "", new { id = "Pincode", @class = "form-control", maxlength = "6", })
+                        </div>
+                    </div>
+                
+            </div>
+
+            <div class="box-footer">
+                <div class="pull-left">
+                    <a href="@Url.Action("Order","Customer")" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to orders</a>
+                </div>
+                <div class="pull-right">
+                    <button type="submit" id="submit" class="btn btn-template-main">
+                        Continue to Delivery Method<i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div>
+               
+            </div>
+        </div>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+    @section reg
+{
+        <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+        <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+        <script src="@Url.Content("~/js/jquery-ui.min.js")"></script>
+        <link href="@Url.Content("~/css/jquery-ui.css")" rel="stylesheet" />
+
+        <script type="text/javascript">
+
+        @*function PlaceOrder(menuid) {
+            $.ajax({
+                datatype: 'json',
+                type: 'post',
+                data: { menuid: $("#menuid").val()},
+                url: '@Url.Action("PlaceOrder", "Customer")',
+                success: function (order) {
+                    if (order.toString() == "Success") {
+                        alert("Order Placed..");
+
+                    }
+
+                    else {
+                        alert("Error else ");
+
+                    }
+                },
+                error: function (order) {
+                    alert("Error");
+                }
+            });
+        }*@
+
+            $(document).ready(function () {
+
+                $("#placeorder").validate({
+
+                    rules: {
+                        StartDate: {
+                            required: true
+
+                        },
+                        EndDate: {
+                            required: true
+                        },
+                        Quantity: {
+                            required: true
+                        },
+                        Pincode: {
+                            required: true,
+                            digits: true
+
+                        },
+                        Area: {
+                            required: true
+                        },
+                        Street: {
+                            required: true
+                        }
+                    },
+
+                    messages: {
+                        StartDate: {
+                            required: 'Please Enter Start date'
+                        },
+                        EndDate: {
+                            required: 'Please Enter End date'
+                        },
+                        Quantity: {
+                            required: 'Please Enter Quantity'
+                        },
+                        Pincode: {
+                            reuired: 'Please Enter your Pincode',
+                            digits: 'only numbers allowed',
+                        },
+                        Street: {
+                            required: 'Please Enter Street'
+                        },
+                        Area: {
+                            required: 'Please Enter Area'
+                        }
+
+                    },
+
+                    errorPlacement: function (error, element) {
+                        error.insertAfter(element.parent());
+                    }
+
+                });
+            });
+
+            //$("#StartDate").datepicker({
+
+
+            //});
+
+        </script>
+    }
+
+
+

@@ -1,0 +1,121 @@
+﻿@model IEnumerable < Project.Models.MenuMaster>
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Choose your Menu</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@foreach (var menu in Model.ToList())
+{
+   
+    @*<div class="row products">*@
+    <div class="col-md-3 col-sm-4">
+        <div class="product">
+            <div class="text-center">
+                <h3>
+                    @menu.Name
+                </h3>
+            </div>
+            <div class="image">
+
+                <img src=@Url.Content(menu.Image) style="width:300px; height:300px;" />
+            </div>
+            <div class="text">
+                <h3>
+                    @menu.Description
+                </h3>
+                <p class="price">@menu.Price</p>
+            </div>
+            <p>
+                <a href="@Url.Action("ViewMenuItems", "Customer", new { id=menu.Id })" class="btn btn-template-main" data-toggle="modal"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">View MenuItem</span></a>
+            </p>
+            <p class="text-center">       
+                <a href="@Url.Action("PlaceOrder","Customer",new { menu.Id })" class="btn btn-template-main" ><i class="fa fa-shopping-cart"></i>Place Order Now !!</a>
+                </p>
+   </div>
+    </div>
+    @*</div>*@
+}
+
+
+
+<div id="Order"  style="display:none;">
+    <div class="box">
+        <div id="content">
+            <div class="container">
+                <div class="center-block">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @using (Html.BeginForm("PlaceOrder", "Customer", FormMethod.Post, new { id = "placeorder" }))
+                            {
+                                    <div class="form-group">
+                                   @Html.TextBox("StartDate", "", new { id = "StartDate", @class = "form-control", placeholder = "Enter Start Date" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBox("EndDate", "", new { id = "EndDate", @class = "form-control", placeholder = "Enter End Date" })
+                                        </div>
+                           
+                                <div class="form-group">
+                                    @Html.TextBox("Quantity", "", new { id = "Quantity", @class = "form-control", Placeholder = "Enter Quantity of tiffin", maxlength="3"})
+                                </div>
+                                <p class="text-center">
+                                    <button type="submit" id="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">Add New Menu</span></button>
+                                </p>
+                            }
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+@*<div class="collapse" id="Order" tabindex="-1" role="progressbar" aria-labelledby="Add New Menu" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center><h4 class="modal-title" id="Login">Add New Menu</h4></center>
+            </div>
+            <div class="modal-body">
+
+                @using (Html.BeginForm("AddMenu", "Admin", FormMethod.Post, new { id = "menu", enctype = "multipart/form-data" }))
+                {
+                    <div class="form-group">
+                        @Html.TextBox("Name", "", new { id = "Name", @class = "getValue form-control", Placeholder = "Enter Menu Name" })
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBox("Description", "", new { id = "Description", @class = "form-control", Placeholder = "Enter Details of Menu" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Upload Image")
+                        <input type="file" name="file" accept="image/*" id="file" placeholder="Upload Image" />
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBox("Price", "", new { id = "Price", @class = "form-control", Placeholder = "Enter Price of menu" })
+                    </div>
+                    <p class="text-center">
+                        <button type="submit" id="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">Add New Menu</span></button>
+                    </p>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>*@
+

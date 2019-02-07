@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Project.Models.GetMenuItems_Result>
+@{
+    ViewBag.Title = "ViewMenuItems";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var MenuId = (int)ViewBag.MenuID;
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Items of menu</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" value="@MenuId" id="MenuId" />
+@foreach (var item in Model.ToList()) 
+{  
+    @*<div class="row products">*@ 
+    <div class="col-md-3 col-sm-4">
+    <div class="product">
+        <div class="text-center">
+            <h3>
+                @item.Name
+            </h3>
+        </div>
+        <div class="image">
+
+            <img src=@Url.Content(item.Image) style="width:150px; height:150px;" />
+        </div>
+        <div class="text">
+            <h4>
+                @item.Description
+            </h4>
+            <p class="price">@item.Price</p>
+        </div>
+
+        <p data-placement="top" data-toggle="tooltip" title="Delete">
+            <button onclick="DeleteMenuitem(@item.Id)"
+                    class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete">
+                <span class="glyphicon glyphicon-trash"></span>&nbsp;Delete Menu Item
+            </button>
+        </p>
+    </div>
+</div>
+    @*</div>*@
+
+}
+
+
+
+@section reg
+{
+    <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+
+    <script type="text/javascript">
+
+        function DeleteMenuitem(id) {
+            $.ajax({
+                datatype: 'json',
+                type: 'post',
+                data: { id: id, menuId: $("#MenuId").val() },
+                url: '@Url.Action("DeleteMenuItem", "Admin")',
+                success: function (item) {
+                    if (item.toString() == "Success") {
+                        alert("item deleted successfully")
+                        window.location.href = '@Url.Action("ViewMenuItems", "Admin")';
+                    }
+                    else {
+                        alert("Error else");
+                    }
+                },
+                error: function (item) {
+                    alert("Error");
+                }
+            });
+        }
+    </script>
+
+}

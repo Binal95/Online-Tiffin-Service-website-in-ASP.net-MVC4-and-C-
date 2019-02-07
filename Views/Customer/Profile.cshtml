@@ -1,0 +1,153 @@
+﻿@model Project.Models.CustomerMaster
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>update profile information</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <div id="content">
+        <div class="container">
+            <div class="center-block">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @*<div class="box">*@
+                        <h4>Update Profile</h4>
+
+
+                        @using (Html.BeginForm("UpdateProfile", "Customer", FormMethod.Post, new { id = "Profile", enctype = "multipart/form-data" }))
+                        {
+                            @Html.HiddenFor(m => m.CustId, new { id = "UserID" })
+
+                            <div class="form-group">@Html.TextBoxFor(m => Model.FirstName, new { id = "FName", @class = "form-control" }) </div>
+
+                            <div class="form-group">@Html.TextBoxFor(m => Model.LastName, new { id = "LName", @class = "form-control" })</div>
+
+                            <div class="form-group">@Html.TextBoxFor(m => Model.Address1, new { id = "Address1", @class = "form-control" })</div>
+
+                            <div class="form-group">@Html.TextBoxFor(m => Model.Address2, new { id = "Address2", @class = "form-control" })</div>
+
+                            <div class="form-group">@Html.TextBoxFor(m => Model.Address3, new { id = "Address3", @class = "form-control" })</div>
+
+                            <div class="form-group">@Html.TextBoxFor(m => Model.Pincode, new { id = "Pincode", @class = "form-control" })</div>
+
+                            <div class="form-group">@Html.TextBoxFor(m => Model.PhoneNo, new { id = "PhoneNo", @class = "form-control" })</div>
+
+                            <div class="form-group">
+                                <input type="file" name="file" value="@Model.Image" @*accept="image/*"*@ id="file" placeholder="Upload Image" />
+                            </div>
+
+                            <div class="form-group">@Html.TextBoxFor(m => Model.Birthdate, new { id = "Birthdate", @class = "form-control", @readonly = "readonly", disabled = "disabled" })</div>
+
+
+
+
+                            <div class="text-center">
+                                @*<button type="submit" id="submit1" class="btn btn-template-main" value="save"><i class="fa fa-user-md"></i> SAVE</button>*@
+                                <button type="submit" id="submit1" class="btn btn-template-main" value="save" /><i class="fa fa-user-md">SAVE</i>
+                            </div>
+                            <br /><br /><br />
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section reg
+{
+    <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery-ui.min.js")"></script>
+    <link href="@Url.Content("~/css/jquery-ui.css")" rel="stylesheet" />
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#Profile").validate({
+                rules: {
+                    FName: {
+                        required: true
+                    },
+                    LName: {
+                        required: true
+                    },
+                    Address1: {
+                        required: true
+                    },
+                    Address2: {
+                        required: true
+                    },
+                    Address3: {
+                        required: true
+                    },
+                    Pincode: {
+                        required: true
+                    },
+                    PhoneNo: {
+                        required: true
+
+                    },
+
+                    Birthdate: {
+                        required: true
+                    },
+                },
+                messages: {
+                    FName: {
+                        required: 'Please Enter First Name... '
+                    },
+                    LName: {
+                        required: 'Please Enter Last Name...'
+                    },
+                    Address1: {
+                        required: 'Please Enter your House No. / Society...'
+
+                    },
+                    Address2: {
+                        required: 'Please Enter your STREET NAME...'
+                    },
+                    Address3: {
+                        required: 'Please Enter your AREA...'
+                    },
+                    Pincode: {
+                        required: 'Please Enter Pincode... '
+                    },
+                    PhoneNo: {
+                        required: 'Please Enter Phone No...'
+                    },
+
+                    Birthdate: {
+                        required: 'Please Enter your Birthdate...'
+                    },
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }
+            });
+        });
+
+        $("#Birthdate").datepicker();
+
+
+    </script>
+}
+
+
+
+

@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+<section style="background-image:url(@Url.Content("~/img/texture-bw.png")">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-left">Welcome @Session["cname"]</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="row">
+    <div class="col-md-4 col-sm-4">
+        <div class="product">
+            <div class="text-center">
+
+                <img src="~/img/Mini-page-001.jpg" style=" width:250px; height:350px;" />
+            </div>
+
+            <div>
+                &nbsp;
+            </div>
+            <div class="row">
+                <center><input type="button" class="btn btn-danger" value="Order For Mini" onclick="@("window.location.href='" + Url.Action("SampleRequest", "Customer") + "'");" id="add1" /></center>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="product">
+            <div class="text-center">
+
+                <img src="~/img/Medium-page-001.jpg" style="width:250px; height:350px;" />
+            </div>
+            <div>
+                &nbsp;
+            </div>
+            <div class="row">
+                <center><input type="button" class="btn btn-danger" value="Order For Medium" onclick="@("window.location.href='" + Url.Action("Order", "Customer") + "'");" id="add1" /></center>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <div class="product">
+            <div class="text-center">
+
+                <img src="~/img/Mega-page-001.jpg" style=" width:250px; height:350px;" />
+            </div>
+            <div>
+                &nbsp;
+            </div>
+            <div class="row">
+                <center><input type="button" class="btn btn-danger" value="Order For Mega" onclick="@("window.location.href='" + Url.Action("Order", "Customer") + "'");" id="add1" /></center>
+            </div>
+        </div>
+    </div>
+</div>

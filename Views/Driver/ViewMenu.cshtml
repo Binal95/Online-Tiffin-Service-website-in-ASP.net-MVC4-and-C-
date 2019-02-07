@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Project.Models.MenuMaster>
+@{
+    ViewBag.Title = "ViewMenu";
+    Layout = "~/Views/Shared/_LayoutDriver.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Menu Details</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@foreach (var menu in Model.ToList())
+{
+
+    @*<div class="row products">*@
+    <div class="col-md-3 col-sm-4">
+        <div class="product">
+            <div class="text-center">
+                <h3>
+                    @menu.Name
+                </h3>
+            </div>
+            <div class="image">
+
+                <img src=@Url.Content(menu.Image) style="width:300px; height:300px;" />
+            </div>
+            <div class="text">
+                <h4>
+                    @menu.Description
+                </h4>
+                <p class="price">@menu.Price</p>
+            </div>
+
+            <p>
+                <a href="@Url.Action("ViewMenuItems", "Driver", new { id=menu.Id })" class="btn btn-template-main" data-toggle="modal"><i class="fa fa-user-md"></i><span class="hidden-xs text-uppercase">View MenuItem</span></a>
+            </p>
+          
+        </div>
+    </div>
+    @*</div>*@
+
+}
+

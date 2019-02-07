@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "CodeRetrival";
+    Layout = "~/Views/Shared/_LayoutDriver.cshtml";
+}
+
+<h2>CodeRetrival</h2>
+
+<div class="box">
+    <div id="content">
+        <div class="container">
+            <div class="center-block">
+                <div class="row">
+                    <div class="col-md-6">
+                        @using (Html.BeginForm("CodeRetrival", "Driver", FormMethod.Post, new { id = "placeorder" }))
+                        {
+                            <div class="form-group">
+                                @Html.TextBox("mailid", String.Empty, "", new { id = "mailid",@class = "form-control", placeholder = "Please enter the Email id" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBox("pw", String.Empty, "", new { id = "pw",@class = "form-control", placeholder = "Please enter the password" })
+                            </div>
+                            
+                            <div class="form-group">
+                                @Html.TextBox("code", String.Empty, "", new { id = "code",@class = "form-control", placeholder = "Please enter the code" })
+                            </div>
+                            <p class="text-center">
+
+                                <button type="submit" id="submit" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i><span class="hidden-xs text-uppercase">Submit</span></button>
+                            </p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

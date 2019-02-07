@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Project.Models.DailyOrderData_Result>
+@{
+    ViewBag.Title = "CodeRetrival";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Daily Orders</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" id="customer-orders">
+
+    <div class="box">
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Cutomer Id</th>
+                        <th>OrderID</th>
+                        <th>Order Name</th>
+                        <th>Payment Method</th>
+                        <th>Price</th>
+
+                        <th>Delivery Address</th>
+                        <th>Code</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.ToList())
+                    {
+
+                        <tr>
+
+                            <td>@order.FirstName</td>
+                            <td>@order.CustId</td>
+                            <td>@order.OrderId</td>
+                            <td>@order.Name</td>
+                            <td>@order.PaymentMode</td>
+                            <td>@order.GrandTotal</td>
+                            <td>@order.DeliveryAddr</td>
+                            <td>@order.Code</td>
+                            <td>
+                                <span class="label label-info">@order.Status</span>
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

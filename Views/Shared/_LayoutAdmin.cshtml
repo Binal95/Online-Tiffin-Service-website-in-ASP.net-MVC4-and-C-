@@ -1,0 +1,282 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Chatapata Dabba.com</title>
+
+    <meta name="keywords" content="">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+
+    <link href="@Url.Content("/css/animate.css")" rel="stylesheet">
+    <link href="@Url.Content("/css/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />
+
+
+    <link href="@Url.Content("/css/style.red.css")" rel="stylesheet" id="theme-stylesheet">
+
+    <link href="@Url.Content("/css/custom.css")" rel="stylesheet">
+
+    <link href="@Url.Content("/css/owl.carousel.css")" rel="stylesheet">
+    <link href="@Url.Content("/css/owl.theme.css")" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="all">
+
+        <header>
+
+            <div id="top">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-xs-5 contact">
+                            <p class="hidden-sm hidden-xs">Contact us on +91 7359857677 or chatapatadabba@gmail.com</p>
+                            <p class="hidden-md hidden-lg">
+                                <a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                            </p>
+                        </div>
+
+                        <div class="col-xs-7">
+                            <div class="login">
+
+                                <ul style="list-style:none ">
+                                    <li class="dropdown" id="user">
+                                        <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user">Welcome @Session["cname"]<b class="caret"> </b></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="@Url.Action("Profile","Customer")" style="color:#555555"> Update Profile</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Changepa","Admin")" style="color:#555555">Change Password</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Logout","Customer")" style="color:#555555">Logout</a>
+                                            </li>
+
+
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+                    <div class="container">
+                        <div class="navbar-header">
+
+                            <a class="navbar-brand home" href="@Url.Action("Index","Home")">
+                                <img src="@Url.Content("/img/Logo.jpg")" alt="Universal logo" class="hidden-xs hidden-sm">
+                            </a>
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--/.navbar-header -->
+
+                        <div class="navbar-collapse collapse" id="navigation">
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown active">
+                                    <a href="@Url.Action("Admin","Admin")" class="dropdown-toggle">Home<b class="caret"></b></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Menu<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("ViewMenu","Admin")">Menu Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ViewItem","Admin")">Item Details</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Order<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                           <a href="@Url.Action("ViewSampleRequest","Admin")">View Sample Order</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ViewOrder","Admin")">View Order</a>                                        </li>
+                                       
+                                        <li>
+                                            <a href="@Url.Action("ViewDailyOrder", "Admin")">Code Dispatch</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("CodeRetrival", "Admin")">View Daily Orders</a>
+                                        </li>
+                                        @*<li>
+                                            <a href="index2.html">Pending Orders</a>
+                                        </li>
+                                        <li>
+                                            <a href="index2.html">Order Tracking</a>
+                                        </li>*@
+                                    </ul>
+                                </li>
+
+                                @*<li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Report Generation<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="index.html">Customer Report</a>
+                                        </li>
+                                        <li>
+                                            <a href="index2.html">Order Report</a>
+                                        </li>
+                                        <li>
+                                            <a href="index2.html">Driver Report</a>
+                                        </li>
+                                        <li>
+                                            <a href="index2.html">Payment Report</a>
+                                        </li>
+                                    </ul>
+                                </li>*@
+
+                                <li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("CustomerTable","Admin")">Customer Details</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="@Url.Action("DriverTable","Admin")">Driver Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Area","Admin")">Area We Serve</a>
+                                        </li>
+                                
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Reviews<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                       
+                                        <li>
+                                            <a href="@Url.Action("ViewFeedBack","Admin")">View FeedBack</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ViewComplain","Admin")">View Complain</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="@Url.Action("DriverReg","Admin")">Add New Driver</a>
+                                </li>
+
+                                @*<li class="dropdown">
+        <a href="@Url.Action("AboutUs","Home")" class="dropdown-toggle">About Us <b class="caret"></b></a>
+    </li>
+    <li class="dropdown">
+        <a href="@Url.Action("ContactUs","Home")" class="dropdown-toggle">Contact Us <b class="caret"></b></a>
+    </li>
+*@
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="container">
+            @RenderBody()
+            @RenderSection("Reg", false)
+        </div>
+
+
+        <footer id="footer">
+            <div class="container">
+                <div class="col-md-3 col-sm-6">
+                    <h4>About us</h4>
+
+                    <p>
+                        ChatpataDabba, has created an ecosystem of online meal service for all who stay away from home but wanted to ghar jaisa khana
+                        ChatpataDabba! It allows you to order delicious home-style food in convenient packaging- ALL ONLINE.
+                    </p>
+
+                    <hr>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+
+                <!-- /.col-md-3 -->
+
+                <div class="col-md-3 col-sm-6">
+
+                    <h4>Contact</h4>
+
+                    <p>
+                        <strong>ChatpataDabba.com</strong>
+                        <br />
+
+                        <strong>Baroda</strong>
+                    </p>
+
+                    <a href="@Url.Action("ContactUs","Home")" class="btn btn-small btn-template-main">Go to contact page</a>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+            </div>
+
+        </footer>
+
+        <div id="copyright">
+            <div class="container">
+                <div class="col-md-12">
+                    <p class="pull-left">&copy;chatpataDabba.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+</script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+@*<script src="@Url.Content("~/js/jquery.cookie.js")"></script>*@
+<script src="@Url.Content("~/js/jquery.counterup.min.js")"></script>
+<script src="@Url.Content("~/js/jquery.parallax-1.1.3.js")"></script>
+<script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+@*<script src="@Url.Content("~/js/bootstrap-hover-dropdown.js")"></script>
+<script src="@Url.Content("~/js/bootstrap.min.js")"></script>
+
+<script src="@Url.Content("~/js/jquery-ui.min.js")"></script>
+<link href="@Url.Content("~/css/jquery-ui.css")" rel="stylesheet" />*@

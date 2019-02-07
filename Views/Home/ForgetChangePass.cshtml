@@ -1,0 +1,41 @@
+﻿@model Project.Models.CustomerMaster
+@{
+    ViewBag.Title = "ForgetChangePass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Changepassword</h2>
+
+<div class="box">
+    <div id="content">
+        <div class="container">
+            <div class="center-block">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        @using (Html.BeginForm("Verifychpass", "Customer", FormMethod.Post, new { id = "var" }))
+                        {
+                            @*<input type="hidden" id="UserID" name="Id" value="@Model.CustId" />*@
+                            @*<div class="form-group">@Html.TextBoxFor(m => pa, new { id = "password", @class = "form-control" })</div>*@
+
+
+                            <div class="form-group">
+                                @Html.Password("new_pass", "", new { id = "new_pass", placeholder = "Enter new password", @class = "form-control" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Password("renew", "", new { id = "renew", placeholder = "Reenter new password", @class = "form-control" })
+
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" id="submit1" class="btn btn-danger"><i class="fa fa-user-md"></i>change</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

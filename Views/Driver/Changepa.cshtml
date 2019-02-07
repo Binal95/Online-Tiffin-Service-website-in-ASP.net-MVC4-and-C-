@@ -1,0 +1,37 @@
+﻿@model Project.Models.CustomerMaster
+@{
+    ViewBag.Title = "Changepa";
+    Layout = "~/Views/Shared/_LayoutDriver.cshtml";
+}
+
+@{
+    var pa = MD5Crypt.Decrypt(@Model.Password, "Dabba");
+
+}
+
+<h2>Changepa</h2>
+
+@using (Html.BeginForm("Verifychpass", "Customer", FormMethod.Post, new { id = "var" }))
+{
+    <input type="hidden" id="UserID" name="Id" value="@Model.CustId" />
+    <div class="form-group">@Html.TextBoxFor(m => pa, new { id = "password", @class = "form-control" })</div>
+
+
+    <div class="form-group">
+        @Html.Password("new_pass", "", new { id = "new_pass", @class = "form-control", placeholder = "Enter new password" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.Password("renew", "", new { id = "renew", @class = "form-control", placeholder = "Reenter new password" })
+
+    </div>
+
+    <div class="text-center">
+        <button type="submit" id="submit1" class="btn btn-template-main"><i class="fa fa-user-md"></i>change</button>
+    </div>
+
+
+
+}
+

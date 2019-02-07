@@ -1,0 +1,77 @@
+﻿
+
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Provide Feedback</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("FeedbackEntry", "Customer", FormMethod.Post, new { id = "RegForm" }))
+{
+
+       <div class="col-md-7">
+
+<div class="form-group">
+    @Html.TextArea("Feedback", "", new { id = "Feedback", @class = "form-control", placeholder = " Please Provide your Feedback" })
+</div>
+
+    <div class="text-center" >
+        <button type="submit" id="submit1" class="btn btn-template-main"><i class="fa fa-user-md"></i> Submit </button>
+    </div>
+    <br/>
+    <br/>
+    <br/> 
+    
+</div>
+
+
+}
+@section reg
+{
+    <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery-ui.min.js")"></script>
+    <link href="@Url.Content("~/css/jquery-ui.css")" rel="stylesheet" />
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#RegForm").validate({
+                rules: {
+                    Feedback: {
+                        required: true
+                    },
+                },
+                messages: {
+                    Feedback: {
+                        required: 'please enter feedback'
+                    },
+
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }
+            });
+        });
+
+
+
+    </script>
+}
+
+
+
+

@@ -1,0 +1,276 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Chatapata Dabba.com</title>
+
+    <meta name="keywords" content="">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap and Font Awesome css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="@Url.Content("~/css/jquery-ui.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("/css/animate.css")" rel="stylesheet">
+    <link href="@Url.Content("/css/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/style.red.css")" rel="stylesheet" id="theme-stylesheet">
+
+    <!-- Custom stylesheet - for your changes -->
+    <link href="@Url.Content("/css/custom.css")" rel="stylesheet">
+
+    <!-- Responsivity for older IE -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicon and apple touch icons-->
+    @*<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="img/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />*@
+    <!-- owl carousel css -->
+
+    <link href="@Url.Content("/css/owl.carousel.css")" rel="stylesheet">
+    <link href="@Url.Content("/css/owl.theme.css")" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="all">
+
+        <header>
+
+            <div id="top">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-xs-5 contact">
+                            <p class="hidden-sm hidden-xs">Contact us on +91 7359857677 or chatapatadabba@gmail.com</p>
+                            <p class="hidden-md hidden-lg">
+                                <a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                            </p>
+                        </div>
+
+                        <div class="col-xs-7">
+                            <div class="login">
+
+                                <ul style="list-style:none ">
+                                    <li class="dropdown" id="user">
+                                        <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user">Welcome @Session["cname"]<b class="caret"> </b></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="@Url.Action("Profile", "Customer")" style="color:#555555">Update Profile</a>
+                                                @*<a href="contact.html" style="color:#555555">Update Profile</a>*@
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Changepa","Customer")" style="color:#555555">Change Password</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="@Url.Action("Logout","Customer")" style="color:#555555">Logout</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand home" href="@Url.Action("Index","Home")">
+                                <img src="@Url.Content("/img/Logo.jpg")" alt="Universal logo" class="hidden-xs hidden-sm">
+                            </a>
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="navbar-collapse collapse" id="navigation">
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li class="dropdown active">
+                                    <a href="@Url.Action("Customer","Customer")" class="dropdown-toggle">Home</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Order<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("Order","Customer")">PlaceOrder</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ViewOrderStatus","Customer")">View Orders</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Daily Order<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("ViewDailyOrder","Customer")">Today'Order</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("CodeRetrival","Customer")">Today'code</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ViewDailyOrder","Customer")">Cancle Order</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="@Url.Action("SampleRequest","Customer")" class="dropdown-toggle">Sample tiffin</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Your Views<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown">
+                                            <a href="@Url.Action("Feedback","Customer")" style="color:#555555">Provide Feedback</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="@Url.Action("Complain","Customer")" style="color:#555555">Complains</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Get Connected<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown">
+                                            <a href="@Url.Action("AboutUs", "Customer")" class="dropdown-toggle">About Us </a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="@Url.Action("ContactUs", "Customer")" class="dropdown-toggle">Contact Us </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                              
+                            </ul>
+
+                        </div>
+                        <!--/.nav-collapse -->
+
+                        <div class="collapse clearfix" id="search">
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+
+                                        <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                                    </span>
+                                </div>
+                            </form>
+
+                        </div>
+                        <!--/.nav-collapse -->
+
+                    </div>
+
+
+                </div>
+                <!-- /#navbar -->
+
+            </div>
+        </header>
+
+        <div class="container">
+            @RenderBody()
+            @RenderSection("Reg", false)
+        </div>
+
+
+        <footer id="footer">
+            <div class="container">
+                <div class="col-md-3 col-sm-6">
+                    <h4>About us</h4>
+
+                    <p>
+                        ChatpataDabba, has created an ecosystem of online meal service for all who stay away from home but wanted to ghar jaisa khana
+                        ChatpataDabba! It allows you to order delicious home-style food in convenient packaging- ALL ONLINE.
+                    </p>
+
+                    <hr>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+
+                <!-- /.col-md-3 -->
+
+                <div class="col-md-3 col-sm-6">
+
+                    <h4>Contact</h4>
+
+                    <p>
+                        <strong>ChatpataDabba.com</strong>
+                        <br />
+
+                        <strong>Baroda</strong>
+                    </p>
+
+                    <a href="@Url.Action("ContactUs","Home")" class="btn btn-small btn-template-main">Go to contact page</a>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+            </div>
+
+        </footer>
+        <div id="copyright">
+            <div class="container">
+                <div class="col-md-12">
+                    <p class="pull-left">&copy;chatpataDabba.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="@Url.Content("~/js/jquery-1.11.1.min.js")>')</script>')
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+<script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+@*<script src="@Url.Content("~/js/jquery.cookie.js")"></script>*@
+<script src="@Url.Content("~/js/jquery.counterup.min.js")"></script>
+<script src="@Url.Content("~/js/jquery.parallax-1.1.3.js")"></script>
+<script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+@*
+    <script src="@Url.Content("~/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery-ui.min.js")"></script>
+        *@

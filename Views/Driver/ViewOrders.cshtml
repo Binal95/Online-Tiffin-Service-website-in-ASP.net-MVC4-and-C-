@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Project.Models.OrderMaster>
+@{
+    ViewBag.Title = "ViewOrders";
+    Layout = "~/Views/Shared/_LayoutDriver.cshtml";
+}
+
+<section style="background-image:url(@Url.Content("~/img/texture-bw.png")">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-left">your today's orders</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="col-md-12" id="customer-orders">
+  <div class="box">
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Customer Id</th>
+                        <th>Customer Name</th>
+                        <th>Menu Id</th>
+                        <th>Date</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                   
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.ToList())
+                    {
+
+                        <tr>
+
+                            <td>@order.CustomerId</td>
+                            <td>@order.CustomerMaster.FirstName</td>
+                            <td>@order.MenuId</td>
+                            <td>@order.Date</td>
+                            <td>@order.StartDate</td>
+                            <td>@order.EndDate</td>
+                            <td>@order.Quantity</td>
+
+                            <td>
+                                <span class="label label-info">@order.Status</span>
+                            </td>
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

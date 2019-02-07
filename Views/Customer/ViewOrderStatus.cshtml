@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Project.Models.OrderList_Result>
+@{
+    ViewBag.Title = "ViewOrderStatus";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>your order summary</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" id="customer-orders">
+
+    <p class="text-muted lead">If you have any questions, please feel free to <a href="@Url.Action("ConatctUs","Home")">contact us</a>, our customer service center is working for you 24/7.</p>
+
+    <div class="box">
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Order Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Price</th>
+                        <th>Order Subtotal</th>
+                        <th>Tax</th>
+                        <th>Total</th>
+                        @*<th>cancel</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.ToList())
+                    {
+                        <tr>
+                          
+                            <td>@order.Name</td>
+                            <td>@order.StartDate</td>
+                            <td>@order.EndDate</td>
+                            <td>@order.Quantity</td>
+                                
+                            <td>
+                                <span class="label label-info">@order.Status</span>
+                            </td>
+                            <td>@order.Price</td>
+                            <td>@order.Total</td>
+                            <td>@order.Tax</td>
+                            <td>@order.GrandTotal</td>
+                            @*<td>
+                                @if(order.StartDate <= DateTime.Now && DateTime.Now <= order.EndDate)
+                                {
+                                    <a href="customer-order.html" class="btn btn-template-main btn-sm">Cancel</a>
+                                }
+                                
+                            </td>*@
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

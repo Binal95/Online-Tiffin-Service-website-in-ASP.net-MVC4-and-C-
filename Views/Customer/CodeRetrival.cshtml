@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "CodeRetrival";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>CodeRetrival</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="box">
+    <div id="content">
+        <div class="container">
+            <div class="center-block">
+                <div class="row">
+                    <div class="col-md-4">
+                        @using (Html.BeginForm("CodeRetrival", "Customer", FormMethod.Post, new { id = "placeorder" }))
+                        {
+
+                            <div class="form-group">
+
+                                @Html.TextBox("code", String.Empty, "", new { id = "code", placeholder = "Please enter the code" })
+                            </div>
+                            <p class="text-center">
+
+                                <button type="submit" id="submit" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i><span class="hidden-xs text-uppercase">Submit</span></button>
+                            </p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

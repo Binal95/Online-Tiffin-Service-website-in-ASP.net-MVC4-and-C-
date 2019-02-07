@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p class="text-muted lead">Please Login into system for further details..,
+ If you have any questions, please feel free to <a href="@Url.Action("ConatctUs","Home")">contact us</a>, our customer service center is working for you 24/7.</p>
+
+<section class="bar background-gray col-md-4" style="margin-left:375px;">
+    <div class="center-block">
+        <div class="boxed">
+            <div id="content">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <div class="heading text-center"><h2>Login</h2></div>
+                            
+                            @using (Html.BeginForm("CheckLogin", "Home", FormMethod.Post, new { id = "Login" }))
+                            {
+                                <div class="form-group">
+                                    <img src="@Url.Content("/img/profile.png")" class="img-circle" style="width:100px; height:100px; margin-left:125px;" />
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBox("EmailID", "", new { id = "EmailID", @class = "form-control", Placeholder = "Enter Email Id" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.Password("Password", "", new { id = "Password", @class = "form-control", Placeholder = "Enter Password" })
+                                </div>
+
+                                <p class="text-center">
+                                    <button type="submit" id="submit" class="btn btn-template-main"><i class="fa fa-sign-in"></i>Log in</button>
+                                </p>
+
+                            }
+                            <p class="text-center text-muted">Not registered yet?</p>
+
+                            <p class="text-center text-muted">
+                                <a href="@Url.Action("Registration1", "Home")"><strong>Register Now</strong></a>
+
+                            <p class="text-center text-muted">
+                                <a href="@Url.Action("Forgotpass", "Home")" id="f"><strong>Forgot Password</strong></a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#submit").click(function () {
+                //alert(1);
+                if ($("#Login").valid()) {
+                    $('#ErrMsg').text('');
+                    $.ajax({
+                        datatype: 'json',
+                        type: 'post',
+                        data: { EmailId: $("#EmailID").val(), Password: $("#Password").val() },
+                        url: '@Url.Action("CheckLogin","Home")',
+                        success: function (res) {
+                            if (res.toString() == "Success") {
+                                window.location.href = '@Url.Action("Customer", "Home")';
+                            }
+                            else {
+                                $('#ErrMsg').text(res.toString());
+                            }
+                        },
+                        error: function (res) {
+                            $('#ErrMsg').text(res.toString());
+                        }
+                    });
+                }
+            });
+
+            $("#Login").validate({
+
+                rules: {
+                    EmailID: {
+                        required: true,
+                        email: true
+                    },
+                    Password: {
+                        required: true
+                    }
+                },
+                messages: {
+                    EmailID: {
+                        required: 'Please Enter EmailID',
+                        email: 'please entern valid email address'
+                    },
+                    Password: {
+                        required: 'Please Enter Password',
+                    },
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }
+            })
+
+        });
+    </script>
+
+
+
+
+
+

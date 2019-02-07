@@ -1,0 +1,111 @@
+﻿@model Project.Models.MenuMaster
+@{
+    ViewBag.Title = "EditMenu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Edit Menu</h1>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="box">
+    <div id="content">
+        <div class="container">
+            <div class="center-block">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        @using (Html.BeginForm("EditMenu", "Admin", FormMethod.Post, new { id = "menu", enctype = "multipart/form-data" }))
+                        {
+                            @Html.HiddenFor(m => m.Id, new { id = "UserID" })
+                            @*<input type="hidden" id="id" name="id" value="@Model.Id" />*@
+                            <div class="form-group">
+                                @Html.TextBox("Name", Model.Name, new { id = "Name", @class = "form-control", placeholder = "Enter Menu Name" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBox("Description", Model.Description, new { id = "Description", @class = "form-control", placeholder = "Enter Description of Item" })
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="file" value="@Model.Image" @*accept="image/*"*@ id="file" placeholder="Upload Image" />
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBox("Price", Model.Price, new { id = "Price", @class = "form-control", placeholder = "Enter Price" })
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" id="submit1" @*onclick="EditMenu(@Model.Id)"*@ class="btn btn-template-main"><i class="fa fa-user-md"></i>Update details</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section reg
+{
+    <script src="@Url.Content("~/js/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#menu").validate({
+
+                rules: {
+                    Name: {
+                        required: true
+                    },
+                    Description: {
+                        required: true
+                    },
+                    Address1: {
+                        required: true
+                    },
+                    file: {
+                        required: true
+                    },
+                    Price: {
+                        required: true
+                    }
+                },
+
+                messages: {
+                    Name: {
+                        required: 'Please Enter  Name'
+                    },
+                    Description: {
+                        required: 'Please Enter details'
+                    },
+                    file: {
+                        required: 'Please Enter image'
+                    },
+                    Price: {
+                        required: 'Please Enter price'
+                    }
+                },
+
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }
+
+            });
+        });
+
+
+    </script>
+
+}
